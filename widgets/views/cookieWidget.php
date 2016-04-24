@@ -11,10 +11,11 @@
 */
 
 use cinghie\cookieconsent\assets\CookieAsset;
+use yii\web\View;
 
 // Load Articles Assets
-CookieAsset::register($this);
-$asset = $this->assetBundles['cinghie\cookieconsent\assets\CookieAsset'];
+//CookieAsset::register($this);
+//$asset = $this->assetBundles['cinghie\cookieconsent\assets\CookieAsset'];
 
 // Create codeJS
 $codeJS = "window.cookieconsent_options = { message: '{$message}', dismiss: '{$dismiss}', learnMore: '{$learnMore}', link: '{$link}',  target: '{$target}', theme: '{$theme}', container: '{$container}', path: '{$path}',";
@@ -23,4 +24,4 @@ if($domain){
 }
 $codeJS .= " expiryDays: {$expiryDays} };";
 
-$this->registerJs($codeJS);
+$this->registerJs($codeJS, View::POS_END);
